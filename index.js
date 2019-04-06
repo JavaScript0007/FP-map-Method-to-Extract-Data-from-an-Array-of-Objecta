@@ -112,10 +112,9 @@ const watchList = [
 ];
 
 
-const fun = (list) => {
-  let rating = [];
-  rating = list.map((item) => ({"Title": item["Title"], "Rating": item["imdbRating"]}))
-  return rating
+const averageRating = (film) => { 
+  let allRatings = film.filter(item => item["Director"] == "Christopher Nolan").map(item => Number(item['imdbRating']))
+  let avarageRating = allRatings.reduce((acc, curr) => acc + curr, 0)/allRatings.length
+  return avarageRating
 }
-
-console.log(fun(watchList))
+console.log(averageRating(watchList))
